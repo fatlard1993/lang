@@ -1,4 +1,7 @@
+import Log from 'log';
+
 const lang = {
+	logger: new Log({ tag: 'lang' }),
 	languages: {},
 	default: 'en-US',
 	load: function(language){
@@ -16,10 +19,10 @@ const lang = {
 
 		if(lang.languages[lang.default] && lang.languages[lang.default][prop]) return lang.languages[lang.default][prop];
 
-		console.warn(`No matching lang prop for "${prop}"`);
+		lang.log.warn()(`No matching lang prop for "${prop}"`);
 
 		return '';
 	}
 };
 
-if(typeof window === 'undefined') module.exports = lang;
+if(typeof module === 'object') module.exports = lang;
