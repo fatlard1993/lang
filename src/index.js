@@ -17,11 +17,15 @@ const lang = {
 	},
 	get: function(key){
 		if(key instanceof Array || key[0] === '['){
-			try{
-				key = JSON.parse(key);
-			}
-			catch(err){
-				return '';
+			if(typeof key === 'string'){
+				try{
+					key = JSON.parse(key);
+				}
+				catch(err){
+					lang.log(`Can't get ${key} .. `, err);
+
+					return '';
+				}
 			}
 
 			function getKey(res){ key.forEach((subKey) => { res = res && res[subKey] ? res[subKey] : undefined; }); return res; }
@@ -41,7 +45,7 @@ const lang = {
 			if(lang.languages[lang.default] && lang.languages[lang.default][key]) return lang.languages[lang.default][key];
 		}
 
-		lang.log.warn()(`No matching lang key for "${key}"`);
+		lang.log.warn(`No matching lang key for "${key}"`);
 
 		return '';
 	}
