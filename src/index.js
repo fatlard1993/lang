@@ -4,7 +4,7 @@ const lang = {
 	log: new Log({ tag: 'lang' }),
 	languages: {},
 	default: 'en-US',
-	templateRegex: /\${(\w+|\[.+\])}/,
+	templateRegex: /\$?{(\w+|\[.+\])}/,
 	load: function(language){
 		lang.languages[language.name] = typeof lang.languages[language.name] === 'undefined' ? language.translation : Object.assign(lang.languages[language.name], language.translation);
 	},

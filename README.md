@@ -19,7 +19,7 @@ lang.load({
 
 
 ```
-lang.parse('${title} | ${author}');
+lang.parse(`{title} | {["days", "${new Date().getDay()}"]}`);
 ```
 
 ```
