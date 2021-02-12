@@ -28,7 +28,7 @@ const lang = {
 				}
 			}
 
-			function getKey(res){ key.forEach((subKey) => { res = res && res[subKey] ? res[subKey] : undefined; }); return res; }
+			const getKey = (res) => { key.forEach((subKey) => { res = res && res[subKey] ? res[subKey] : undefined; }); return res; };
 
 			let res = getKey(lang.languages[navigator.language]);
 
