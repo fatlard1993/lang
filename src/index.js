@@ -1,7 +1,4 @@
-import Log from 'log';
-
 const lang = {
-	log: new Log({ tag: 'lang' }),
 	languages: {},
 	default: 'en-US',
 	templateRegex: /\$?{(\w+|\[.+\])}/,
@@ -22,8 +19,6 @@ const lang = {
 					key = JSON.parse(key);
 				}
 				catch(err){
-					lang.log(`Can't get ${key} .. `, err);
-
 					return '';
 				}
 			}
@@ -44,8 +39,6 @@ const lang = {
 
 			if(lang.languages[lang.default] && lang.languages[lang.default][key]) return lang.languages[lang.default][key];
 		}
-
-		lang.log.warn(`No matching lang key for "${key}"`);
 
 		return '';
 	}
